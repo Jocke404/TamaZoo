@@ -22,7 +22,7 @@ public class SadTama extends Tamagotchi {
     }
 
     @Override
-    public void receiveBiscuit(int biscuits) {
+    public void receiveBiscuits(int biscuits) {
 
     }
 }

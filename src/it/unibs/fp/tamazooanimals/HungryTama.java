@@ -21,7 +21,7 @@ public class HungryTama extends Tamagotchi{
     }
 
     @Override
-    public void receiveBiscuit(int biscuits) {
+    public void receiveBiscuits(int biscuits) {
         for(int i=1; i<=biscuits; i++) {
             satiety = Math.min(satiety * BISCUIT_FACTOR, SOGLIA_MAX);
         }

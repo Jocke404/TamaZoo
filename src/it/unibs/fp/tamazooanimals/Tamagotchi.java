@@ -1,13 +1,13 @@
 package it.unibs.fp.tamazooanimals;
 
-    /**
+/**
      * La seguente serve a gestire il Tamagotchi.
      * @param name Nome che l'utente decide di dare al Tamagothci
      * @param affection Valore di affetto del Tamagotchi
      * @param satiety Valore di sazieta' del Tamagotchi
      */
 
-    public abstract class Tamagotchi {
+    public class Tamagotchi {
         protected static final int MAX_HAP_SATIETY = 55;
         protected static final int MIN_HAP_SATIETY = 45;
         protected static final int MAX_HAP_AFFECTION = 55;
@@ -27,21 +27,13 @@ package it.unibs.fp.tamazooanimals;
         private String name;
         protected double satiety;
         protected double affection;
-
-        public Tamagotchi(String _name, double _affection, double _satiety) {
+                
+        public Tamagotchi(String _name, int _affection, int _satiety) {
             this.name = _name;
             this.satiety = _satiety;
             this.affection = _affection;
         }
         
-        public Tamagotchi(String name) {
-           this.name = name;
-        }
-        
-        public String getName() {
-            return this.name;
-        }
-
 
         // Il seguente metodo serve a fare le carezze modificando la sazieta' e l'affetto in base al mood precedente del Tamagotchi.
         public void receiveCaresses(int numCaresses) {
@@ -88,7 +80,7 @@ package it.unibs.fp.tamazooanimals;
             return(satiety <= SOGLIA_MIN || satiety >= SOGLIA_MAX || affection <= SOGLIA_MIN || affection >= SOGLIA_MAX);
         }
 
-        public abstract void receiveBiscuit(int biscuits);
+        //public abstract void receiveBiscuit(int biscuits);
 
         // Il seguente metodo serve a definire i parametri di sazieta' e affetto per cui il Tamagotchi e' triste.
         public boolean imSad() {
@@ -135,4 +127,12 @@ package it.unibs.fp.tamazooanimals;
             }
             return description.toString();
         }
+
+
+		public Object getName() {
+			return name;
+		}
+		public Tamagotchi(String name) {
+	           this.name = name;
+	        }
     }
