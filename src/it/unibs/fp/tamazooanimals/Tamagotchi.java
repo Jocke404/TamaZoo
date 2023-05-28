@@ -1,7 +1,7 @@
 package it.unibs.fp.tamazooanimals;
 
-/**
-     * La seguente serve a gestire il Tamagotchi.
+	/**
+     * The following class is used to manage the Tamagotchi.
      * @param name Nome che l'utente decide di dare al Tamagothci
      * @param affection Valore di affetto del Tamagotchi
      * @param satiety Valore di sazieta' del Tamagotchi
@@ -50,8 +50,11 @@ package it.unibs.fp.tamazooanimals;
             this.typeName = "normal";
         }
         
-
-        // Il seguente metodo serve a fare le carezze modificando la sazieta' e l'affetto in base al mood precedente del Tamagotchi.
+		/**
+		 * The following method is used to make caresses by modifying satiety and affection
+		 * based on the Tamagotchi's previous mood.
+		 * @param numCaresses
+		 */
         public void receiveCaresses(int numCaresses) {
             if(affection <= SOGLIA_MAX) {
                 affection += numCaresses;
@@ -61,7 +64,12 @@ package it.unibs.fp.tamazooanimals;
                 satiety -= numCaresses*CARESSES_INCREASE_FACTOR;
             }
         }
-        // Il seguente metodo serve a dare biscotti modificando la sazieta' e l'affetto in base al mood precedente del Tamagotchi.
+        /**
+         * The following method is used to give bisucits by modifying satiety and affection
+         * based on the Tamagotchi's previous mood.        
+         * @param numBiscuit        
+         */                       
+       
         public void receiveBiscuits(int numBiscuit) {
             if(satiety <= SOGLIA_MIN_FELICITA) {
                 for(int i=SOGLIA_MIN; i < numBiscuit; i++) {
@@ -100,12 +108,21 @@ package it.unibs.fp.tamazooanimals;
             this.satiety = satiety;
         }
         
-        // Il seguente metodo serve a definire i parametri di sazieta' e affetto per cui il Tamagotchi muore.
+        /**
+         * The following method is used to define the parameters of satiety 
+         * and affection for which the Tamagotchi dies.
+         * @return if the tama is dead
+         */
+       
         public boolean imDead() {
             return(satiety <= SOGLIA_MIN || satiety >= SOGLIA_MAX || affection <= SOGLIA_MIN || affection >= SOGLIA_MAX);
         }
 
-        // Il seguente metodo serve a definire i parametri di sazieta' e affetto per cui il Tamagotchi e' triste.
+        /**
+         * The following method is used to define the parameters of satiety 
+         * and affection for which the Tamagotchi is sad.
+         * @return if the tama is sad
+         */
         public boolean imSad() {
             if (satiety >= MIN_SAD_SATIETY && satiety <= MAX_SAD_SATIETY || affection >= MIN_SAD_AFFECTION && affection <= MAX_SAD_AFFECTION
             		|| satiety >= 95) {
@@ -114,20 +131,32 @@ package it.unibs.fp.tamazooanimals;
                 return false;
             }
         }
-        // Il seguente metodo serve a definire i parametri di sazieta' e affetto per cui il Tamagotchi e' felice.
+        /**
+         * The following method is used to define the satiety 
+         * and affection parameters for which the Tamagotchi is happy.
+         * @return if the tama is happy
+         */
         public boolean imHappy() {
-            if (affection >= MIN_HAP_AFFECTION && affection <= MAX_HAP_AFFECTION || satiety >= MIN_HAP_SATIETY && satiety <= MAX_HAP_SATIETY) {
+            if (affection >= MIN_HAP_AFFECTION && affection <= MAX_HAP_AFFECTION && satiety >= MIN_HAP_SATIETY && satiety <= MAX_HAP_SATIETY) {
                 return true;
             } else return false;
         }
-        // Il seguente metodo serve a definire i parametri di sazieta' e affetto per cui il Tamagotchi e' in uno stato di normalita'.
+        /**
+         * The following method is used to define the parameters of satiety 
+         * and affection for which the Tamagotchi is in a state of normality.
+         * @return if the tama is good
+         */
         public boolean imFine() {
             if (!imHappy() == true && !imSad() == true && !imDead() == true) {
                 return true;
             } else return false;
         }
+        
+        /**
+         * The following method is to display the state of the Tamagotchi after each interaction
+         * by the user and also returns the mood of the Tamagotchi.
+         */
 
-        // Il seguente metodo serve a visualizzare lo stato del Tamagotchi dopo ogni interazione  da parte dell'utente e restituisce anche il mood del Tamagotchi.
         public String toString() {
             StringBuffer description = new StringBuffer();
             description.append(String.format("\nNome:%s\nSpecie:%s\nSazieta':%1.2f\nSoddisfazione:%1.2f",name,typeName,satiety,affection));

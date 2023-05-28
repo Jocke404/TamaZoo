@@ -1,13 +1,12 @@
 package it.unibs.fp.tamazooanimals;
-
+/**
+ * This class is an extension of Tamagotchi and is used to create 
+ * a different species of Tama called SadTama.
+ * @param name Name that the user types in  
+ * @param typeName Species name
+ */
 public class SadTama extends Tamagotchi {
-	/*
-    public SadTama(String name) {
-        super(name);
-    }
-    */
-
-
+	
     public SadTama(String name, int satiety) {
         super(name, 0, satiety);
         this.typeName = "sad";

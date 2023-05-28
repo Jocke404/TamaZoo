@@ -12,7 +12,12 @@ public class IOUtil {
 
     private static final String DAI_UN_NOME_AL_TUO_TAMAGOTCHI = "\nDai un nome al tuo amico:\n";
     
-     // Il seguente metodo serve a ricevere l'input dell'utente per istanziare il Tamagotchi.
+    /**
+     * This method is used to create Tamagotchis.
+     * @return Tamagotchi
+     * @return HungryTama
+     * @return SadTama
+     */
     public static Tamagotchi createTamagotchi() {
         int  random = NumeriCasuali.estraiIntero(0, 2);
         String name = InputDati.leggiStringaNonVuota(DAI_UN_NOME_AL_TUO_TAMAGOTCHI);

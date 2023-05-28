@@ -1,25 +1,27 @@
 package it.unibs.fp.tamazoo;
 import it.unibs.fp.mylib.InputDati;
+
 import it.unibs.fp.mylib.MyMenu;
 import it.unibs.fp.mylib.NumeriCasuali;
-import it.unibs.fp.tamazooanimals.HungryTama;
 import it.unibs.fp.tamazooanimals.IOUtil;
-import it.unibs.fp.tamazooanimals.SadTama;
 import it.unibs.fp.tamazooanimals.Tamagotchi;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
+/**
+ * This is the main class of the project TamaZoo.
+ * @authors Benedetta Anglani, Ruggero Lombardi, Federico Carlo Schettino
+ *
+ */
 public class Main {
 	protected static final int SOGLIA_MAX = 100;
     protected static final int SOGLIA_MIN = 0;
 	
     private static final int MAX_10 = 10;
     private static final int MIN_1 = 1;
+    
     static ArrayList<Tamagotchi> zoo = new ArrayList<>();
-    
     static String[] chooses = {"Dai carezze", "Dai biscotti"};
-    
     
     public static void main(String[] args) {
         System.out.println("Benvenuto nel magico mondo dei Tamagotchi!!!");
