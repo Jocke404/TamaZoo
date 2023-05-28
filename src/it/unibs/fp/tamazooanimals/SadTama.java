@@ -1,14 +1,16 @@
 package it.unibs.fp.tamazooanimals;
 
 public class SadTama extends Tamagotchi {
-	
+	/*
     public SadTama(String name) {
         super(name);
     }
+    */
 
 
     public SadTama(String name, int satiety) {
-        super(name, satiety, 50);
+        super(name, 0, satiety);
+        this.typeName = "sad";
     }
 
     @Override
@@ -18,11 +20,19 @@ public class SadTama extends Tamagotchi {
 
     @Override
     public boolean imDead() {
-        return satiety <= 0 || satiety >= 100;
+        return getSatiety() == 0 || getSatiety() >= SOGLIA_MAX;
     }
 
     @Override
     public void receiveBiscuits(int biscuits) {
-
+    	for(int i = 1; i <= biscuits; i++) {
+    		setSatiety(Math.min(getSatiety()* BISCUIT_FACTOR, SOGLIA_MAX));
+    	}
     }
+    
+    @Override
+    public void receiveCaresses(int caresses) {
+    	setSatiety(Math.max(0, getSatiety()- caresses/CARESSES_FACTOR));
+    }
+    
 }

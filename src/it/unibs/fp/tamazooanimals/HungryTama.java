@@ -1,39 +1,32 @@
 package it.unibs.fp.tamazooanimals;
 
 public class HungryTama extends Tamagotchi{
-
-    public HungryTama(String name) {
-        super(name);
-        this.affection=SOGLIA_MAX;
-    }
+private static final int CARESSES_AMPLIFICATION = 2;
 
     public HungryTama(String name, int satiety) {
         super(name, SOGLIA_MAX, satiety);
-    }
-
-    public HungryTama(String name, int affection, int satiety) {
-        super(name, SOGLIA_MAX, satiety);
+        this.typeName = "hungry";
     }
 
     @Override
     public void receiveCaresses(int caresses) {
-        satiety = Math.max(0, satiety-caresses/(CARESSES_FACTOR/2));
+        setSatiety(Math.max(0, getSatiety()-(CARESSES_AMPLIFICATION*caresses/CARESSES_FACTOR)));
     }
 
     @Override
     public void receiveBiscuits(int biscuits) {
         for(int i=1; i<=biscuits; i++) {
-            satiety = Math.min(satiety * BISCUIT_FACTOR, SOGLIA_MAX);
+            setSatiety(Math.min(getSatiety() * BISCUIT_FACTOR, SOGLIA_MAX));
         }
     }
 
     @Override
     public boolean imSad() {
-        return affection < MIN_HAP_AFFECTION || satiety < MIN_HAP_SATIETY;
+        return getSatiety() < MIN_HAP_SATIETY;
     }
 
     @Override
     public boolean imDead(){
-        return affection == 0 || satiety == 0;
+    	return getSatiety() == 0;
     }
 }

@@ -9,7 +9,7 @@ public class HungryTamaTest {
 	public void tamagordoShouldNotDieDueToTooManyCookies() throws Exception {
 		Tamagotchi tama = new HungryTama("gordo", 90);
 		tama.receiveBiscuits(100);
-		assertTrue(!tama.imSad());
+		assertFalse(tama.imDead());
 	}
 
 	@Test
